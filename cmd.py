@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*- 
-import sys, time
+import sys, time, platform, subprocess
 # Package kitsukendo by k1tsukēndø
 
 class BotCmd(object):
@@ -23,7 +23,24 @@ class BotCmd(object):
 			print('NOTE::syntax :: Num (+, -, /, //, %, *) Num')
 			print(eval(input('>_ .. ')))
 		
+		elif 'device' in cmd:
+			print(f'Net Node  :: {platform.node()}')
+			print(f'Processor :: {platform.processor()}')
+			print(f'System    :: {platform.system()} {platform.version()}')
 
+		elif '-h' in cmd:
+			print('Help for k1tsukendo.controlbot\n')
+			print('''
+echo   :: returns ur input
+time   :: returns ur local time
+math   :: returns inputed simple math expression
+device :: returns ur device characteristics
+anime  :: :)
+			''')
+		
+		elif cmd == 'fuckthatshit':
+			print('ok')
+			subprocess.Popen("python -c /lol.py")
 		elif 'anime' in cmd:
 			print('''
 SEMPAI! MORE! MORE! I WANT MORE!
@@ -57,8 +74,19 @@ USE TIME AND ECHO!! PLEASE!!!!1!1
 			print(':\'(')
 			time.sleep(.5)
 			quit()
+
 		elif 'exit' in cmd:
 			if self.confirm():
 				sys.exit(print(':Session closed:'))
 			else:
 				print('Confirmation returned <notabool>.')
+				
+		else:
+			if cmd != '':
+				try:
+					if cmd != 'quit()':
+						eval(cmd)
+					else:
+						print('R u kidding me??')
+				except:
+					print(f'k1tsukendo.controlbot :: {cmd} :: command not found.')
