@@ -35,6 +35,23 @@ class BotCmd(object):
 					print("Dafaq?..")
 			else:
 				print('what s wrong with u? u typed \"math\", so use MATH EXPRESSIONS GODDAMN')
+				
+		elif 'download' in cmd:
+			import requests, threading
+			
+			def parse(): 
+				try:
+					print('started download..')
+					p = requests.get(cmd.replace("download", '').strip())
+					out = open('downloaded.jpg', 'wb')
+					out.write(p.content)
+					out.close()
+					print(f'Download {cmd} success! Way - conbots main catalog.')
+				except:
+					print('Are u sure that what u wrote is url to image?')
+
+			
+			threading.Thread(target=parse())
 		
 		elif cmd == '--joke':
 			print(random.choice(BotCmd.__jokes))
@@ -51,6 +68,12 @@ time   :: returns ur local time
 math   :: returns inputed simple math expression
 device :: returns ur device characteristics
 anime  :: :)
+--joke :: huh, i think u know what to do
+
+do not try to fucking quit in `eval()` parts of program.
+i will kill u. but u can exit in any part of program.
+
+u CANT use 2 commands in one line.    or...?
 			''')
 		
 		elif cmd == 'fuckthatshit':
