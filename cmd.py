@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*- 
-import sys, time, platform, subprocess
+import sys, time, platform, subprocess, os, random
 # Package kitsukendo by k1tsukēndø
 
 class BotCmd(object):
+	__failed = 0
+	__jokes = [
+		'unow what does a cow-maniac? wearing leatherman.',
+		'cat goes meow, cow goes moo, dog goes woof, hohlinka goes slava ukraine',
+		'sometimes i think that vodka is not allowed to hohols to drink.'
+	]
 	def confirm(self):
 		cmd_confirm = input('Are you sure? [Y/N] ')
 		if 'y' in cmd_confirm.lower():
@@ -21,14 +27,23 @@ class BotCmd(object):
 
 		elif 'math' in cmd:
 			print('NOTE::syntax :: Num (+, -, /, //, %, *) Num')
-			print(eval(input('>_ .. ')))
+			inp = input('>_ .. ')
+			if inp != 'quit()':
+				try:
+					print(eval(inp))
+				except:
+					print("Dafaq?..")
+			else:
+				print('what s wrong with u? u typed \"math\", so use MATH EXPRESSIONS GODDAMN')
 		
+		elif cmd == '--joke':
+			print(random.choice(BotCmd.__jokes))
 		elif 'device' in cmd:
 			print(f'Net Node  :: {platform.node()}')
 			print(f'Processor :: {platform.processor()}')
 			print(f'System    :: {platform.system()} {platform.version()}')
 
-		elif '-h' in cmd:
+		elif cmd == '-h':
 			print('Help for k1tsukendo.controlbot\n')
 			print('''
 echo   :: returns ur input
@@ -40,7 +55,9 @@ anime  :: :)
 		
 		elif cmd == 'fuckthatshit':
 			print('ok')
-			subprocess.Popen("python -c /lol.py")
+			subprocess.Popen("python lol.py")
+		elif cmd == 'cls':
+			os.system('cls||clear')
 		elif 'anime' in cmd:
 			print('''
 SEMPAI! MORE! MORE! I WANT MORE!
@@ -87,6 +104,11 @@ USE TIME AND ECHO!! PLEASE!!!!1!1
 					if cmd != 'quit()':
 						eval(cmd)
 					else:
-						print('R u kidding me??')
+						print('R u kidding me?')
 				except:
-					print(f'k1tsukendo.controlbot :: {cmd} :: command not found.')
+					BotCmd.__failed += 1
+					if BotCmd.__failed == 5:
+						BotCmd.__failed = 0
+						print('TYPE FCKN -h U IDIOT')
+					if BotCmd.__failed != 5:
+						print(f'k1tsukendo.controlbot :: {cmd} :: command not found.')
