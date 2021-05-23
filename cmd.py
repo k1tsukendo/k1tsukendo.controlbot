@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*- 
-import sys, time, platform, subprocess, os, random
+# -*- coding: utf-8 -*-
+import sys, time, platform, subprocess, os, random, logger
 # Package kitsukendo by k1tsukēndø
 
 class BotCmd(object):
@@ -35,24 +35,24 @@ class BotCmd(object):
 					print("Dafaq?..")
 			else:
 				print('what s wrong with u? u typed \"math\", so use MATH EXPRESSIONS GODDAMN')
-				
+
 		elif 'download' in cmd:
 			import requests, threading
-			
-			def parse(): 
+
+			def parse():
 				try:
-					print('started download..')
 					p = requests.get(cmd.replace("download", '').strip())
+					logger.logger.info('started download..')
 					out = open('downloaded.jpg', 'wb')
 					out.write(p.content)
 					out.close()
-					print(f'Download {cmd} success! Way - conbots main catalog.')
+					logger.logger.info(f'Download {cmd} success! Way - conbots main catalog.')
 				except:
-					print('Are u sure that what u wrote is url to image?')
+					logger.logger.critical('Are u sure that what u wrote is url to image?')
 
-			
+
 			threading.Thread(target=parse())
-		
+
 		elif cmd == '--joke':
 			print(random.choice(BotCmd.__jokes))
 		elif 'device' in cmd:
@@ -75,7 +75,7 @@ i will kill u. but u can exit in any part of program.
 
 u CANT use 2 commands in one line.    or...?
 			''')
-		
+
 		elif cmd == 'fuckthatshit':
 			print('ok')
 			subprocess.Popen("python lol.py")
@@ -103,7 +103,7 @@ USE TIME AND ECHO!! PLEASE!!!!1!1
 ⣿⣿⣿⣶⣶⣮⣥⣒⠲⢮⣝⡿⣿⣿⡆⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⣠⣴⣿⣿⣿
 
 ''')
-	
+
 		elif 'ಠ_ಠ' in cmd:
 			print('What?')
 			time.sleep(1)
@@ -117,10 +117,10 @@ USE TIME AND ECHO!! PLEASE!!!!1!1
 
 		elif 'exit' in cmd:
 			if self.confirm():
-				sys.exit(print(':Session closed:'))
+				sys.exit(logger.logger.info(':Session closed:'))
 			else:
-				print('Confirmation returned <notabool>.')
-				
+				logger.logger.info('Confirmation returned <notabool>.')
+
 		else:
 			if cmd != '':
 				try:
@@ -134,4 +134,4 @@ USE TIME AND ECHO!! PLEASE!!!!1!1
 						BotCmd.__failed = 0
 						print('TYPE FCKN -h U IDIOT')
 					if BotCmd.__failed != 5:
-						print(f'k1tsukendo.controlbot :: {cmd} :: command not found.')
+						logger.logger.error(f'k1tsukendo.controlbot :: {cmd} :: command not found.')
