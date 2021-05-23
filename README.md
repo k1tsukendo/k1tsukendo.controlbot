@@ -1,6 +1,7 @@
 # k1tsukendo.controlbot
 ### Python console for system manipulating
 <hr>
+
 #### Requirements
-`pip install logger`
-`Python 3x`
+logger : `pip install logger`  <br/>
+Python : `Python 3x`
