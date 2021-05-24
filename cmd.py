@@ -7,8 +7,8 @@ class BotCmd(object):
 	__jokes = [
 		'unow what does a cow-maniac? wearing leatherman.',
 		'cat goes meow, cow goes moo, dog goes woof, hohlinka goes slava ukraine',
-		'sometimes i think that vodka is not allowed to hohols to drink.'
-	]
+		'sometimes i think that vodka is not allowed to hohols to drink.']
+
 	def confirm(self):
 		cmd_confirm = input('Are you sure? [Y/N] ')
 		if 'y' in cmd_confirm.lower():
