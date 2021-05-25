@@ -3,5 +3,6 @@
 <hr>
 
 #### Requirements
-logger : `pip install logger`  <br/>
-Python : `Python 3x`
+logger   : `pip install logger`  <br/>
+requests : `pip install requests`  <br/>
+Python   : `Python 3x`
