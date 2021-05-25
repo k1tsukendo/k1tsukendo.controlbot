@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
-import cmd, sys
-# Package kitsukendo by k1tsukēndø
+from logger        import *
+logger.info('main.py: including libs...')
+logger.info('main.py: preparing to run...')
 
-console = cmd.BotCmd()
+from functionality import *
+from commands_list import *
+logger.info('main.py: main: done.\n')
 
 def main():
-	print('k1tsukēndø - k1tsukendo.controlbot')
-	print('Hello, user. It s a bot-sys-controller. For help type -h.\n')
+	
 	while 1:
-		console.run()
+		command = input(': >_ : ')
+		if COMMANDS[0] in command:   print(echo(command))  # echo
+		elif command == COMMANDS[1]: print(now_time())  # time
+		elif command == COMMANDS[2]: print(device())  # device
+		elif command == COMMANDS[3]: clear_term()
 
-if __name__ == '__main__':
-	sys.exit(main())
+if __name__ == '__main__': sys.exit(main())
