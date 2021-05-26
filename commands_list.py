@@ -2,5 +2,6 @@ COMMANDS = [
 	'echo',
 	'--tm',
 	'--dv',
-	'cls'
+	'cls',
+	'exit'
 ]

@@ -11,6 +11,13 @@ from requests import get as get_from
 from os       import system as syst
 logger.info('functionality.py: including: done.')
 
+
+def confirm(what=None):
+	if what is None: prompt = input('Are you sure? [Y/n] ')
+	else: prompt = input(f'Are you sure want to {what}? [Y/n] ')
+	if prompt.lower() == 'y':   return True
+	elif prompt.lower() == 'n': return None
+
 # time
 def now_time():
 	now = datetime.now()
@@ -29,3 +36,11 @@ Net Name     :: {node()};
 # Terminal
 def clear_term():
 	syst('cls || clear')
+
+def exit_console(runbool):
+	if confirm('quit'):
+		runbool = False
+		logger.info('Closing session.')
+		logger.info('Shutting down libs...')
+		exit(logger.info('Session closed'))
+	
