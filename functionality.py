@@ -8,7 +8,7 @@ from time     import sleep
 from platform import *
 from datetime import *
 from requests import get as get_from
-from os       import system
+from os       import system as syst
 logger.info('functionality.py: including: done.')
 
 # time
@@ -20,7 +20,12 @@ def echo(command):
 	return command.replace('echo', '').strip()
 	
 def device():
-	return 'In dev.'
+	return f'''                    :DEVICE INFO:
+Architecture :: {architecture()[0]};
+System       :: {system()} {release()};
+Net Name     :: {node()};
+...          :: {platform()};'''
 
+# Terminal
 def clear_term():
-	system('cls || clear')
+	syst('cls || clear')

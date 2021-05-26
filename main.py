@@ -7,6 +7,7 @@ from functionality import *
 from commands_list import *
 logger.info('main.py: main: done.\n')
 
+
 def main():
 	
 	while 1:
