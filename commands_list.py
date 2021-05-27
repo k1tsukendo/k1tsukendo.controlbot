@@ -3,5 +3,6 @@ COMMANDS = [
 	'--tm',
 	'--dv',
 	'cls',
-	'exit'
+	'exit',
+	'download'
 ]

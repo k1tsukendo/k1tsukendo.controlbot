@@ -7,7 +7,6 @@ from sys      import exit
 from time     import sleep
 from platform import *
 from datetime import *
-from requests import get as get_from
 from os       import system as syst
 logger.info('functionality.py: including: done.')
 
@@ -22,16 +21,11 @@ def confirm(what=None):
 def now_time():
 	now = datetime.now()
 	return f'Your local time is {now.hour}:{now.minute}.'
+
 # echo
-def echo(command):
-	return command.replace('echo', '').strip()
-	
-def device():
-	return f'''                    :DEVICE INFO:
-Architecture :: {architecture()[0]};
-System       :: {system()} {release()};
-Net Name     :: {node()};
-...          :: {platform()};'''
+def echo(command): return command.replace('echo', '').strip()
+
+def device(): return f'Arch: {architecture()[0]};\nSystem: {system()};\nNetName: {node()}'
 
 # Terminal
 def clear_term():
@@ -43,4 +37,12 @@ def exit_console(runbool):
 		logger.info('Closing session.')
 		logger.info('Shutting down libs...')
 		exit(logger.info('Session closed'))
-	
+
+if __name__ != '__main__':
+	logger.info('preparing func: <now_time>...')
+	logger.info('preparing func: <echo>...')
+	logger.info('preparing func: <device>...')
+	logger.info('preparing func: <clear_term>...')
+	logger.info('preparing func: <exit_console>...')
+		
+	logger.info('preparing func: done.')
