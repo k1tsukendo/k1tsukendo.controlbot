@@ -4,5 +4,6 @@ COMMANDS = [
 	'--dv',
 	'cls',
 	'exit',
-	'download'
+	'download',
+	'nhentai'
 ]

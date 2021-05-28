@@ -6,6 +6,7 @@ logger.info('main.py: preparing to run...')
 from functionality import *
 from commands_list import *
 from downloader    import *
+from nhentai       import *
 from time          import time
 from threading     import Thread
 logger.info('main.py: main: done.\n')
@@ -21,6 +22,7 @@ def main():
 		elif command == COMMANDS[3]: clear_term()
 		elif command == COMMANDS[4]: exit_console(running)
 		elif command == COMMANDS[5]: get_image()
+		elif COMMANDS[6] in command: getby_id(command)
 
 		else:
 			try:
