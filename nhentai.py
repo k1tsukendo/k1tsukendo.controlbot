@@ -3,7 +3,7 @@ from hentai import Hentai, Format
 from functionality import confirm
 
 def getby_id(cmd):
-	id = int(cmd.replace('nhentai', '').strip())
+	id = int(cmd.replace('nhentai', '').replace('get', '').strip())
 	if len(str(id)) > 6:
 		print(f'{id} is not a manga id! So... Zero Two.')
 		id = 281415
@@ -21,3 +21,12 @@ def getby_id(cmd):
 	else:
 		manga.download(progressbar=True)
 		print('Enjoy.')
+		
+def searchby_id(cmd):
+	id = int(cmd.replace('nhentai', '').replace('search', '').strip())
+	if len(str(id)) > 6:
+		print(f'{id} is not a manga id! So... Zero Two.')
+		id = 281415
+	manga = Hentai(id)
+	Hentai.exists(manga.id)
+	print(f'#{manga.id} :: {manga.title(Format.Pretty)} exists!')

@@ -24,7 +24,11 @@ def main():
 		elif command == COMMANDS[3]: clear_term()
 		elif command == COMMANDS[4]: exit_console(running)
 		elif command == COMMANDS[5]: get_image()
-		elif COMMANDS[6] in command: getby_id(command)
+		elif COMMANDS[6] in command:
+			if 'search' in command:
+				searchby_id(command)
+			if 'get' in command:
+				getby_id(command)
 
 		else:
 			try:
@@ -37,7 +41,10 @@ if __name__ == '__main__':
 	logger.warning('Make sure that you are using python ver3+ and installed all required libraries.\n')
 	print(f'Device Info\n{device()}\n')
 	print('''
-█▄▀ ▄█ ▀█▀ █▀ █░█ █▄▀ █▀▀ █▄░█ █▀▄ █▀█
-█░█ ░█ ░█░ ▄█ █▄█ █░█ ██▄ █░▀█ █▄▀ █▄█\nSystem Control bot ver3\n''')
+----------------------------------------------
+|█▄▀ ▄█ ▀█▀ █▀ █░█ █▄▀ █▀▀ █▄░█ █▀▄ █▀█ |
+|█░█ ░█ ░█░ ▄█ █▄█ █░█ ██▄ █░▀█ █▄▀ █▄█ |
+|System Control bot ver3.                     |
+---------------------------------------------\n''')
 
 	Thread(target=sys.exit(main())).run()
