@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
+
 from logger        import *
 logger.info('main.py: including libs...')
-logger.info('main.py: preparing to run...')
+logger.info('main.py: preparing to run...\n')
 
 from functionality import *
 from commands_list import *
 from downloader    import *
 from nhentai       import *
+
 from time          import time
 from threading     import Thread
 logger.info('main.py: main: done.\n')
@@ -30,4 +32,12 @@ def main():
 			except:
 				logger.error(f'k1tsukendo: command {command} not found.')
 
-if __name__ == '__main__': sys.exit(main())
+if __name__ == '__main__':
+	logger.info("Main thread started work.")
+	logger.warning('Make sure that you are using python ver3+ and installed all required libraries.\n')
+	print(f'Device Info\n{device()}\n')
+	print('''
+█▄▀ ▄█ ▀█▀ █▀ █░█ █▄▀ █▀▀ █▄░█ █▀▄ █▀█
+█░█ ░█ ░█░ ▄█ █▄█ █░█ ██▄ █░▀█ █▄▀ █▄█\nSystem Control bot ver3\n''')
+
+	Thread(target=sys.exit(main())).run()

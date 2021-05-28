@@ -5,14 +5,19 @@ from functionality import confirm
 def getby_id(cmd):
 	id = int(cmd.replace('nhentai', '').strip())
 	if len(str(id)) > 6:
-		print(f'{id} is not a manga id!')
-		return
+		print(f'{id} is not a manga id! So... Zero Two.')
+		id = 281415
 	manga = Hentai(id)
 	Hentai.exists(manga.id)
-	print(f'{manga.title(Format.Pretty)}. Is it what you want?')
+	print(f'#{manga.id} :: {manga.title(Format.Pretty)}')
 	
-	if confirm('proceed download'):
-		manga.download(progressbar=True)
-		print(f'Downloading {manga.title(Format.Pretty)} Success!')
+	if id != 281415:
+		if confirm('proceed download'):
+			print('Starting download...\n')
+			manga.download(progressbar=True)
+			print(f'Downloading {manga.title(Format.Pretty)} Success!\n')
+		else:
+			print(f'Downloading {manga.title(Format.Pretty)} aborted.\n')
 	else:
-		print(f'Downloading {manga.title(Format.Pretty)} aborted.')
+		manga.download(progressbar=True)
+		print('Enjoy.')

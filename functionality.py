@@ -1,21 +1,24 @@
 # -*- coding: utf-8 -*-
 from logger   import *
 logger.info('functionality.py: including libs..')
-logger.info('functionality.py: preparing to run...')
+logger.info('functionality.py: preparing to run...\n')
 
 from sys      import exit
 from time     import sleep
 from platform import *
 from datetime import *
 from os       import system as syst
-logger.info('functionality.py: including: done.')
+logger.info('functionality.py: including: done.\n')
 
 
-def confirm(what=None):
-	if what is None: prompt = input('Are you sure? [Y/n] ')
-	else: prompt = input(f'Are you sure want to {what}? [Y/n] ')
+def confirm(what=None, default='y'):
+	if what is None: prompt = input(f'Are you sure? [Y/n] ({default})')
+	else: prompt = input(f'Are you sure want to {what}? [Y/n] ({default}) ')
 	if prompt.lower() == 'y':   return True
 	elif prompt.lower() == 'n': return None
+	elif prompt == '':
+		if default == 'y': return True
+		elif default == 'n': return None
 
 # time
 def now_time():
@@ -44,5 +47,4 @@ if __name__ != '__main__':
 	logger.info('preparing func: <device>...')
 	logger.info('preparing func: <clear_term>...')
 	logger.info('preparing func: <exit_console>...')
-		
-	logger.info('preparing func: done.')
+	logger.info('preparing func: done.\n')
