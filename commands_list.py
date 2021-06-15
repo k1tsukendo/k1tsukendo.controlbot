@@ -1,9 +1,9 @@
 COMMANDS = [
 	'echo',
-	'--tm',
-	'--dv',
+	'tm',
+	'dv',
 	'cls',
-	'exit',
-	'download',
-	'nhentai'
+	'quit',
+	'dl',
+	'nh'
 ]

@@ -3,7 +3,7 @@ from hentai import Hentai, Format
 from functionality import confirm
 
 def getby_id(cmd):
-	id = int(cmd.replace('nhentai', '').replace('get', '').strip())
+	id = int(cmd.replace('nh', '').replace('get', '').strip())
 	if len(str(id)) > 6:
 		print(f'{id} is not a manga id! So... Zero Two.')
 		id = 281415
@@ -23,7 +23,7 @@ def getby_id(cmd):
 		print('Enjoy.')
 		
 def searchby_id(cmd):
-	id = int(cmd.replace('nhentai', '').replace('search', '').strip())
+	id = int(cmd.replace('nh', '').replace('search', '').strip())
 	if len(str(id)) > 6:
 		print(f'{id} is not a manga id! So... Zero Two.')
 		id = 281415
